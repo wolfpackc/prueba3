@@ -1,0 +1,239 @@
+import java.util.Arrays;
+
+public class MyList {
+    private static final int Default_increment_size=10;
+    private int[] lista;
+    private int current;
+
+    public MyList(){
+        lista=new int[Default_increment_size];
+        current=0;
+
+    }
+
+
+    //get devuelve el elemento de la psocion que me pasa por parametro
+    //me pasaran un index.
+    public  int getPos(int index){
+        return lista[index];
+    }
+
+    /**
+     *metodo add me pasaran item y lo añado al final de la lista.
+     *
+     */
+    public void Add(int item){
+//        boolean add=false;
+//        for (int i=0;i< lista.length && !add;i++){
+//            if (lista[i]==0){
+//                lista[i]=item;
+//                add =true;
+//            }
+//        }
+
+         lista[current]=item;
+         current++;
+         if(current >= lista.length){
+             Resize();
+         }
+
+    }
+    //devuelve la longitud de la lista, es decir el numero de datos insertados;
+    public int Length(int[] lista){
+        return current;
+    }
+
+    public int size(int[] lista){
+        return lista.length;
+    }
+
+    //met que me imprima mi lista
+    public void Print(){
+        for (int i =0;i< current;i++){
+            System.out.println(" "+ lista[i]+ "/");
+        }
+    }
+
+    //me insertan 10 elementos;
+    //y copia los elementos de la lista en el array y luego hacemos que la lista sea ese nuevo array
+    private void copy(int[] array){
+
+        for (int i=0;i<current;i++) {
+            array[i]=lista[i];
+        }
+
+
+    }
+
+    //metodo par incrementar nuestra lista
+    private void Resize(){
+        int[] newarray=new int[current+Default_increment_size];
+        copy(newarray);
+    }
+
+    //añadirlo en cierta posicion de una lista lista.add(en el indice 3 meteme el dato 5)
+    public void AddIndex(int indice,int valor) {
+
+        for (int i = indice; i < lista.length; i++) {
+            lista[i] = lista[i++];
+            if (i == indice) {
+                lista[i] = valor;
+            }
+        }
+    }
+
+        //metodo remove que elimine el ultimo elemento de la lista;
+        //si nos sobran 10 celdas lo redimensionamos
+        public void RemoveLast(){
+            int[] newlista=new int[current-1];
+
+            for(int i=0;i<newlista.length;i++){
+                newlista[i]=lista[i];
+            }
+            lista=newlista;
+
+
+            current--;
+        }
+
+
+/*        public void Sustituir(int index,int valor){
+            int[] listanueva= new int[current-1];
+
+            for (int i =)
+        }*/
+
+        public int RemoveIndex(int index){
+            int valor2=lista[index];
+
+            for (int i =index;i<lista.length;i++){
+
+                if (i!=lista.length-1){
+                    lista[index]=lista[index++];
+                }else {
+                    lista[i]=0;
+                }
+
+            }
+
+
+            current--;
+            return valor2;
+        }
+
+
+
+
+            public void countSort(int array[], int size) {
+                int[] output = new int[size + 1];
+
+
+                int max = array[0];
+                for (int i = 1; i < size; i++) {
+                    if (array[i] > max)
+                        max = array[i];
+                }
+                int[] count = new int[max + 1];
+
+                for (int i = 0; i < max; ++i) {
+                    count[i] = 0;//lo pongo todo a 0.
+                }
+
+                for (int i = 0; i < size; i++) {
+                    count[array[i]]++;
+                }
+
+                for (int i = 1; i <= max; i++) {//suma acumulativa
+                    count[i] += count[i - 1];
+                }
+
+                for (int i = size - 1; i >= 0; i--) {//ordenar
+                    output[count[array[i]] - 1] = array[i];
+                    count[array[i]]--;
+                }
+
+                for (int i = 0; i < size; i++) {
+                    array[i] = output[i];
+                }
+
+
+
+
+            }
+
+            public int LinealSearch(int[] array,int valor) {
+                int posEncontrado = -1;
+
+                for (int i = 0; i < array.length; i++) {
+                    if (array[i] == valor) {
+                        posEncontrado = i;
+
+                    }
+
+                }
+                return posEncontrado;
+            }
+
+
+    public  int busquedaBinariaConWhile(int[] arreglo, int busqueda){
+        int izquierda = 0, derecha = arreglo.length - 1;
+
+        while(izquierda <= derecha){
+            int mid =((izquierda + derecha) / 2);
+            int elementoDelMedio = arreglo[mid];
+
+            if(elementoDelMedio == busqueda){
+                return mid;
+            }
+
+            if(busqueda < elementoDelMedio){
+                derecha = mid - 1;
+            }else{
+                izquierda = mid + 1;
+            }
+        }
+        return -1;
+    }
+// eescribe un metodo gitbiggestdiggit;
+    //devuelve el numero con mas digitos del array.
+    //si tengo varios con distintos digitos devuelvo el menor
+
+    public int gitBigDiggit(){
+            int[] contador=new int[current];
+            int[] array2=new int[current];
+
+            for(int i=0;i< current;i++){
+                array2[i]=lista[i];
+            }
+
+            for(int i =0;i<current;i++){
+                int cont=0;
+                int numbasura=0;
+                while(array2[i] !=0){
+                   numbasura= array2[i]/10;
+                    cont++;
+
+
+                }
+                contador[i]=cont;
+            }
+
+
+
+
+	let {number}= array 
+
+
+
+
+    }
+
+
+
+        //remove el indice que yo quiera
+    public static void main(String[] args) {
+
+
+
+    }
+}
